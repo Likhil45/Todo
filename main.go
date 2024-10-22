@@ -1,9 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,18 +14,6 @@ var todos = []todo{
 	{Id: "1", Item: "clean room", Status: false},
 	{Id: "2", Item: "Play football", Status: true},
 	{Id: "3", Item: "Play Cricket", Status: false},
-}
-
-func postTodos(context *gin.Context) {
-	var newTodo todo
-
-	if error := context.BindJSON(&newTodo); error != nil {
-		fmt.Println(error)
-		return
-	}
-	todos = append(todos, newTodo)
-
-	context.IndentedJSON(http.StatusOK, newTodo)
 }
 
 func main() {
